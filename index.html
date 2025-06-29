@@ -1,0 +1,2720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LUNVIOR | Trendy Fashion for All</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+  <style>
+    :root {
+      --primary: #6a0dad;
+      --secondary: #ff6b6b;
+      --dark: #1a1a2e;
+      --light: #f8f9fa;
+      --accent: #ffd166;
+      --indigo-900: #3a0ca3;
+      --teal: #06d6a0;
+      --pink: #ef476f;
+      --electric-blue: #00f5d4;
+      --neon-pink: #f72585;
+      --gold: #FFD700;
+      --silver: #C0C0C0;
+    }
+    
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #ffffff;
+      color: #00003;
+      padding-bottom: 60px;
+    }
+    
+    /* Futuristic Logo Animation */
+    .logo-container {
+      display: flex;
+      align-items: center;
+    }
+    
+    .futuristic-logo {
+      width: 60px;
+      height: 60px;
+      margin-right: 15px;
+      background: linear-gradient(135deg, var(--primary), var(--indigo-900));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+      font-size: 1.5rem;
+      box-shadow: 0 4px 15px rgba(123, 44, 191, 0.3);
+      position: relative;
+      overflow: hidden;
+      animation: pulse 2s infinite alternate;
+    }
+    
+    .futuristic-logo::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(
+        to bottom right,
+        transparent 45%,
+        rgba(255, 255, 255, 0.3) 50%,
+        transparent 55%
+      );
+      transform: rotate(30deg);
+      animation: shine 3s infinite;
+    }
+    
+    @keyframes shine {
+      0% { transform: translateX(-100%) rotate(30deg); }
+      100% { transform: translateX(100%) rotate(30deg); }
+    }
+    
+    @keyframes pulse {
+      0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(106, 13, 173, 0.7); }
+      70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(106, 13, 173, 0); }
+      100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(106, 13, 173, 0); }
+    }
+    
+    /* Header Styles */
+    .brand-header {
+      background-color: var(--dark) !important;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+    }
+    
+    .navbar.scrolled {
+      background-color: rgba(26, 26, 46, 0.95) !important;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    
+    /* Buttons */
+    .btn-primary {
+      background-color: var(--primary);
+      border-color: var(--primary);
+      transition: all 0.3s ease;
+    }
+    
+    .btn-primary:hover {
+      background-color: #6a1b9a;
+      border-color: #6a1b9a;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(106, 13, 173, 0.3);
+    }
+    
+    .btn-outline-primary {
+      color: var(--primary);
+      border-color: var(--primary);
+      transition: all 0.3s ease;
+    }
+    
+    .btn-outline-primary:hover {
+      background-color: var(--primary);
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(106, 13, 173, 0.3);
+    }
+    
+    .btn-secondary {
+      background-color: var(--secondary);
+      border-color: var(--secondary);
+      transition: all 0.3s ease;
+    }
+    
+    /* Search Button Styles */
+    .search-btn {
+      background: linear-gradient(45deg, var(--neon-pink), var(--electric-blue));
+      color: white;
+      border: none;
+      transition: all 0.3s ease;
+    }
+    
+    .search-btn:hover {
+      background: linear-gradient(45deg, var(--electric-blue), var(--neon-pink));
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(0, 245, 212, 0.3);
+    }
+    
+    /* Search Results Panel */
+    .search-results-panel {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      max-height: 400px;
+      overflow-y: auto;
+      background: white;
+      border-radius: 0 0 10px 10px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      z-index: 1000;
+      display: none;
+      animation: slideDown 0.3s ease-out;
+    }
+    
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .search-result-item {
+      padding: 10px;
+      border-bottom: 1px solid #eee;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    
+    .search-result-item:hover {
+      background-color: #f8f9fa;
+    }
+    
+    .search-result-item img {
+      width: 50px;
+      height: 50px;
+      object-fit: cover;
+      border-radius: 5px;
+      margin-right: 10px;
+    }
+    
+    /* Hero Section */
+    .hero-section {
+      height: 60vh;
+      background-color: var(--light);
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero-content {
+      max-width: 600px;
+      padding: 0 50px;
+      animation: fadeInUp 1s ease-out;
+    }
+    
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    /* Product Cards */
+    .product-card {
+      border: none;
+      border-radius: 12px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      background: white;
+    }
+    
+    .product-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    }
+    
+    .product-img {
+      height: 300px;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    
+    .product-card:hover .product-img {
+      transform: scale(1.05);
+    }
+    
+    .badge-tag {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: var(--secondary);
+      color: white;
+      font-weight: 600;
+    }
+    
+    .wishlist-btn {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: rgba(255,255,255,0.8);
+      border: none;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ff6b6b;
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+      z-index: 2;
+    }
+    
+    .wishlist-btn:hover, .wishlist-btn.active {
+      background: #ff6b6b;
+      color: white;
+      transform: scale(1.1);
+    }
+    
+    /* Collection Modal */
+    .collection-modal .modal-content {
+      border-radius: 15px;
+      overflow: hidden;
+      border: none;
+    }
+    
+    .collection-modal .modal-header {
+      background: linear-gradient(45deg, var(--primary), var(--indigo-900));
+      color: white;
+      border-bottom: none;
+    }
+    
+    .collection-modal .modal-body {
+      padding: 0;
+    }
+    
+    .collection-modal .close {
+      color: white;
+      text-shadow: none;
+      opacity: 1;
+    }
+    
+    /* Luxury Modal Special Styling */
+    #luxuryModal .modal-header {
+      background: linear-gradient(45deg, var(--gold), var(--silver));
+      color: var(--dark);
+    }
+    
+    #luxuryModal .modal-content {
+      border: 2px solid var(--gold);
+    }
+    
+    #luxuryModal .product-card {
+      border: 1px solid rgba(255, 215, 0, 0.3);
+    }
+    
+    #luxuryModal .product-card:hover {
+      box-shadow: 0 15px 30px rgba(255, 215, 0, 0.2);
+    }
+    
+    #luxuryModal .btn-outline-primary {
+      color: var(--gold);
+      border-color: var(--gold);
+    }
+    
+    #luxuryModal .btn-outline-primary:hover {
+      background-color: var(--gold);
+      color: var(--dark);
+    }
+     /* Collection Modal */
+    .collection-modal .modal-content {
+      border-radius: 15px;
+      overflow: hidden;
+      border: none;
+    }
+    
+    .collection-modal .modal-header {
+      background: linear-gradient(45deg, var(--primary), var(--indigo-900));
+      color: white;
+      border-bottom: none;
+    }
+    
+    .collection-modal .modal-body {
+      padding: 0;
+    }
+    
+    .collection-modal .close {
+      color: white;
+      text-shadow: none;
+      opacity: 1;
+    }
+    
+    /* User Control Panel */
+    .user-control-panel {
+      position: fixed;
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%);
+      z-index: 1000;
+      background: white;
+      border-radius: 10px 0 0 10px;
+      box-shadow: -5px 5px 15px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+    
+    .user-control-panel.collapsed {
+      transform: translate(calc(100% - 40px), -50%);
+    }
+    
+    .user-control-toggle {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--primary);
+      color: white;
+      cursor: pointer;
+    }
+    
+    .user-control-content {
+      width: 250px;
+      padding: 15px;
+    }
+    
+    .user-control-item {
+      display: flex;
+      align-items: center;
+      padding: 10px;
+      border-radius: 5px;
+      margin-bottom: 5px;
+      transition: all 0.2s;
+    }
+    
+    .user-control-item:hover {
+      background: rgba(106, 13, 173, 0.1);
+    }
+    
+    .user-control-item i {
+      margin-right: 10px;
+      width: 20px;
+      text-align: center;
+    }
+    
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+      .product-img {
+        height: 200px;
+      }
+      
+      .hero-content {
+        padding: 0 20px;
+        text-align: center;
+      }
+      
+      .hero-section {
+        height: 50vh;
+      }
+      
+      .user-control-panel {
+        display: none;
+      }
+      
+      .mobile-search {
+        display: block !important;
+      }
+      
+      .desktop-search {
+        display: none !important;
+      }
+      
+      .mobile-collections {
+        display: flex !important;
+      }
+      
+      .desktop-collections {
+        display: none !important;
+      }
+    }
+    
+    /* Gradient Text */
+    .gradient-text {
+      background: linear-gradient(90deg, var(--electric-blue), var(--neon-pink));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    
+    /* Section Titles */
+    .section-title {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 30px;
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      width: 50%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--electric-blue), var(--neon-pink));
+      bottom: -10px;
+      left: 0;
+    }
+    
+    /* Navigation Highlight */
+    .nav-highlight {
+      position: relative;
+    }
+    
+    .nav-highlight::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      background: var(--electric-blue);
+      bottom: -2px;
+      left: 0;
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+    
+    .nav-highlight:hover::after {
+      transform: scaleX(1);
+    }
+    
+    /* Full Page Views */
+    .full-page-view {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: white;
+      z-index: 1050;
+      overflow-y: auto;
+      display: none;
+    }
+    
+    .full-page-header {
+      background: var(--dark);
+      color: white;
+      padding: 15px;
+      position: sticky;
+      top: 0;
+      z-index: 1;
+    }
+    
+    .close-full-view {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+    }
+    
+    /* Slider Section */
+    .slider-section {
+      background-color: #f8f9fa;
+      padding: 50px 0;
+    }
+    
+    .slider-item {
+      padding: 20px;
+      text-align: center;
+    }
+    
+    .slider-item img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    
+    .slider-item h5 {
+      margin-top: 15px;
+      color: var(--dark);
+    }
+
+    /* Luxury Page Animation */
+    .luxury-intro {
+      background: linear-gradient(135deg, #000000, #1a1a2e);
+      color: white;
+      padding: 80px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .luxury-intro::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
+      opacity: 0.3;
+    }
+    
+    .luxury-title {
+      font-size: 4rem;
+      font-weight: 700;
+      background: linear-gradient(to right, var(--gold), var(--silver));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+    }
+    
+    .luxury-subtitle {
+      font-size: 1.5rem;
+      margin-bottom: 30px;
+      color: rgba(255, 255, 255, 0.8);
+    }
+    
+    .luxury-divider {
+      height: 3px;
+      background: linear-gradient(to right, transparent, var(--gold), transparent);
+      margin: 30px 0;
+    }
+    
+    .luxury-feature {
+      padding: 30px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 215, 0, 0.2);
+      transition: all 0.3s ease;
+    }
+    
+    .luxury-feature:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+      border-color: var(--gold);
+    }
+    
+    .luxury-icon {
+      font-size: 2.5rem;
+      color: var(--gold);
+      margin-bottom: 15px;
+    }
+    
+    /* User Control Panel */
+    .user-control-panel {
+      position: fixed;
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%);
+      z-index: 1000;
+      background: white;
+      border-radius: 10px 0 0 10px;
+      box-shadow: -5px 5px 15px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+    
+    .user-control-panel.collapsed {
+      transform: translate(calc(100% - 40px), -50%);
+    }
+    
+    .user-control-toggle {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--primary);
+      color: white;
+      cursor: pointer;
+    }
+    
+    .user-control-content {
+      width: 250px;
+      padding: 15px;
+    }
+    
+    .user-control-item {
+      display: flex;
+      align-items: center;
+      padding: 10px;
+      border-radius: 5px;
+      margin-bottom: 5px;
+      transition: all 0.2s;
+    }
+    
+    .user-control-item:hover {
+      background: rgba(106, 13, 173, 0.1);
+    }
+    
+    .user-control-item i {
+      margin-right: 10px;
+      width: 20px;
+      text-align: center;
+    }
+    
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+      .product-img {
+        height: 200px;
+      }
+      
+      .hero-content {
+        padding: 0 20px;
+        text-align: center;
+      }
+      
+      .hero-section {
+        height: 50vh;
+      }
+      
+      .user-control-panel {
+        display: none;
+      }
+      
+      .mobile-collections {
+        display: flex !important;
+      }
+      
+      .desktop-collections {
+        display: none !important;
+      }
+      
+      .luxury-title {
+        font-size: 2.5rem;
+      }
+      
+      .luxury-subtitle {
+        font-size: 1.2rem;
+      }
+    }
+    
+    /* Gradient Text */
+    .gradient-text {
+      background: linear-gradient(90deg, var(--electric-blue), var(--neon-pink));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    
+    /* Section Titles */
+    .section-title {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 30px;
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      width: 50%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--electric-blue), var(--neon-pink));
+      bottom: -10px;
+      left: 0;
+    }
+    
+    /* Navigation Highlight */
+    .nav-highlight {
+      position: relative;
+    }
+    
+    .nav-highlight::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      background: var(--electric-blue);
+      bottom: -2px;
+      left: 0;
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+    
+    .nav-highlight:hover::after {
+      transform: scaleX(1);
+    }
+    
+    /* Full Page Views */
+    .full-page-view {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: white;
+      z-index: 1050;
+      overflow-y: auto;
+      display: none;
+    }
+    
+    .full-page-header {
+      background: var(--dark);
+      color: white;
+      padding: 15px;
+      position: sticky;
+      top: 0;
+      z-index: 1;
+    }
+    
+    .close-full-view {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+    }
+    
+    /* Slider Section */
+    .slider-section {
+      background-color: #f8f9fa;
+      padding: 50px 0;
+    }
+    
+    .slider-item {
+      padding: 20px;
+      text-align: center;
+    }
+    
+    .slider-item img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    
+    .slider-item h5 {
+      margin-top: 15px;
+      color: var(--dark);
+    }
+    
+    /* Mobile Collections */
+    .mobile-collections {
+      display: none;
+      width: 100%;
+      padding: 10px;
+      background: var(--dark);
+      position: fixed;
+      top: 80px;
+      left: 0;
+      z-index: 999;
+    }
+    
+    /* User Icon */
+    .user-icon {
+      position: relative;
+    }
+    
+    .user-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+    
+    /* Logout Confirmation */
+    .logout-confirm {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      z-index: 1100;
+      display: none;
+    }
+    
+    .logout-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      z-index: 1099;
+      display: none;
+    }
+
+    /* Search Icon Button */
+    #search-icon-btn {
+      transition: all 0.3s ease;
+    }
+
+    #search-icon-btn:hover {
+      transform: scale(1.1);
+      color: var(--electric-blue) !important;
+    }
+
+    .search-modal .search-results-panel {
+      max-height: 400px;
+      overflow-y: auto;
+      border: 1px solid #dee2e6;
+      border-radius: 5px;
+      margin-top: 10px;
+    }
+
+    /* Hero Carousel */
+    .hero-carousel {
+      margin-top: 20px;
+    }
+
+    .hero-carousel .carousel-item {
+      height: 400px;
+    }
+
+    .hero-carousel .carousel-item img {
+      object-fit: cover;
+      height: 100%;
+    }
+
+    .hero-carousel .carousel-caption {
+      background: rgba(0, 0, 0, 0.5);
+      padding: 20px;
+      border-radius: 10px;
+      bottom: 20%;
+    }
+
+    .hero-carousel .carousel-indicators button {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      margin: 0 5px;
+    }
+
+    @media (max-width: 768px) {
+      .hero-carousel .carousel-item {
+        height: 300px;
+      }
+      
+      .hero-carousel .carousel-caption {
+        bottom: 10%;
+        padding: 10px;
+      }
+      
+      .hero-carousel .carousel-caption h5 {
+        font-size: 1.2rem;
+      }
+      
+      .hero-carousel .carousel-caption p {
+        font-size: 0.9rem;
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="brand-header bg-dark text-white py-3 sticky-top">
+    <div class="container d-flex justify-content-between align-items-center flex-wrap">
+      <div class="d-flex align-items-center">
+        <div class="logo-container">
+          <div class="futuristic-logo">LR</div>
+          <div>
+            <h1 class="mb-0 fw-bold">LUNVIOR</h1>
+            <small class="d-block">Men | Women | GenZ | Kids | Luxury</small>
+          </div>
+        </div>
+      </div>
+      <div class="d-flex align-items-center mt-2 mt-md-0">
+        <nav class="d-none d-md-block me-4 desktop-collections">
+          <a href="#home" class="btn btn-sm btn-outline-light me-2 nav-highlight">Home</a>
+          <div class="dropdown d-inline me-2">
+            <button class="btn btn-sm btn-outline-light dropdown-toggle nav-highlight" type="button" id="collectionsDropdown" data-bs-toggle="dropdown">
+              Collections
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#" onclick="showCollectionModal('men')">Men</a></li>
+              <li><a class="dropdown-item" href="#" onclick="showCollectionModal('women')">Women</a></li>
+              <li><a class="dropdown-item" href="#" onclick="showCollectionModal('genz')">GenZ</a></li>
+              <li><a class="dropdown-item" href="#" onclick="showCollectionModal('kids')">Kids</a></li>
+              <li><a class="dropdown-item" href="#" onclick="showCollectionModal('luxury')">Luxury</a></li>
+            </ul>
+          </div>
+          <a href="#" class="btn btn-sm btn-outline-light me-2 nav-highlight" onclick="showFullPageView('new-arrivals')">New Arrivals</a>
+          <a href="#offers" class="btn btn-sm btn-outline-light me-2 nav-highlight">Offers</a>
+        </nav>
+        <div class="d-flex align-items-center">
+          <!-- Search Icon -->
+          <button class="btn btn-link text-white me-3" id="search-icon-btn">
+            <i class="bi bi-search fs-5"></i>
+          </button>
+          
+          <!-- User Icon -->
+          <div class="user-icon" id="user-icon">
+            <div class="user-avatar" id="user-avatar">
+              <i class="bi bi-person-fill"></i>
+            </div>
+            <button class="btn btn-outline-light btn-sm d-none" id="login-btn" onclick="openLoginModal()">Login</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Collections -->
+  <div class="mobile-collections">
+    <div class="d-flex justify-content-around">
+      <button class="btn btn-sm btn-outline-light" onclick="showCollectionModal('men')">Men</button>
+      <button class="btn btn-sm btn-outline-light" onclick="showCollectionModal('women')">Women</button>
+      <button class="btn btn-sm btn-outline-light" onclick="showCollectionModal('genz')">GenZ</button>
+      <button class="btn btn-sm btn-outline-light" onclick="showCollectionModal('kids')">Kids</button>
+      <button class="btn btn-sm btn-outline-light" onclick="showCollectionModal('luxury')">Luxury</button>
+    </div>
+  </div>
+
+  <!-- User Control Panel -->
+  <div class="user-control-panel collapsed" id="userControlPanel">
+    <div class="user-control-toggle" onclick="toggleUserControlPanel()">
+      <i class="bi bi-person-fill"></i>
+    </div>
+    <div class="user-control-content">
+      <div class="d-flex align-items-center mb-3">
+        <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-2" style="width: 40px; height: 40px;">
+          <i class="bi bi-person-fill"></i>
+        </div>
+        <div>
+          <h6 class="mb-0" id="control-panel-username">User Name</h6>
+          <small class="text-muted" id="control-panel-email">user@example.com</small>
+        </div>
+      </div>
+      <hr class="my-2">
+      <div class="user-control-item" onclick="showFullPageView('user-dashboard')">
+        <i class="bi bi-person"></i> My Profile
+      </div>
+      <div class="user-control-item" onclick="showFullPageView('orders')">
+        <i class="bi bi-bag"></i> My Orders
+      </div>
+      <div class="user-control-item" onclick="showFullPageView('wishlist')">
+        <i class="bi bi-heart"></i> Wishlist
+      </div>
+      <div class="user-control-item" onclick="showFullPageView('cart')">
+        <i class="bi bi-cart"></i> Cart
+      </div>
+      <hr class="my-2">
+      <div class="user-control-item text-danger" onclick="confirmLogout()">
+        <i class="bi bi-box-arrow-right"></i> Logout
+      </div>
+    </div>
+  </div>
+
+  <!-- Logout Confirmation -->
+  <div class="logout-overlay" id="logout-overlay"></div>
+  <div class="logout-confirm" id="logout-confirm">
+    <h5>Logout Confirmation</h5>
+    <p>Are you sure you want to logout?</p>
+    <div class="d-flex justify-content-between mt-3">
+      <button class="btn btn-secondary" onclick="hideLogoutConfirm()">Cancel</button>
+      <button class="btn btn-danger" onclick="logout()">Logout</button>
+    </div>
+  </div>
+
+  <!-- Full Page Views -->
+  <div id="new-arrivals-view" class="full-page-view">
+    <div class="full-page-header d-flex justify-content-between align-items-center">
+      <h4 class="mb-0">New Arrivals</h4>
+      <button class="close-full-view" onclick="hideFullPageView('new-arrivals')">&times;</button>
+    </div>
+    <div class="container py-4">
+      <div class="row g-4">
+        <!-- New arrival products will be loaded here -->
+      </div>
+    </div>
+  </div>
+
+  <div id="wishlist-view" class="full-page-view">
+    <div class="full-page-header d-flex justify-content-between align-items-center">
+      <h4 class="mb-0">Your Wishlist</h4>
+      <button class="close-full-view" onclick="hideFullPageView('wishlist')">&times;</button>
+    </div>
+    <div class="container py-4">
+      <div id="wishlist-items" class="row g-4"></div>
+      <div class="text-center mt-4" id="empty-wishlist" style="display: none;">
+        <i class="bi bi-heart text-muted" style="font-size: 3rem;"></i>
+        <h5 class="mt-3">Your wishlist is empty</h5>
+        <p>Start adding items you love!</p>
+        <a href="#" class="btn btn-primary mt-2" onclick="showCollectionModal('genz')">Browse Products</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="cart-view" class="full-page-view">
+    <div class="full-page-header d-flex justify-content-between align-items-center">
+      <h4 class="mb-0">Your Cart</h4>
+      <button class="close-full-view" onclick="hideFullPageView('cart')">&times;</button>
+    </div>
+    <div class="container py-4">
+      <div id="cart-items" class="row g-4"></div>
+      <div class="text-center mt-4">
+        <h5>Total: ₹<span id="cart-total">0</span></h5>
+        <button class="btn btn-success mt-3" onclick="showPayment()">Proceed to Checkout</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="orders-view" class="full-page-view">
+    <div class="full-page-header d-flex justify-content-between align-items-center">
+      <h4 class="mb-0">My Orders</h4>
+      <button class="close-full-view" onclick="hideFullPageView('orders')">&times;</button>
+    </div>
+    <div class="container py-4">
+      <ul id="orders-list" class="list-group"></ul>
+    </div>
+  </div>
+
+  <div id="user-dashboard-view" class="full-page-view">
+    <div class="full-page-header d-flex justify-content-between align-items-center">
+      <h4 class="mb-0">My Profile</h4>
+      <button class="close-full-view" onclick="hideFullPageView('user-dashboard')">&times;</button>
+    </div>
+    <div class="container py-4">
+      <h3 class="section-title mb-4">Welcome, <span id="dashboard-username"></span>!</h3>
+      <div class="row">
+        <div class="col-md-4 mb-4">
+          <div class="card p-3 h-100">
+            <h5>My Cart</h5>
+            <p>Manage your cart items.</p>
+            <button class="btn btn-outline-dark" onclick="showFullPageView('cart')">Go to Cart</button>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="card p-3 h-100">
+            <h5>My Orders</h5>
+            <p>Track your past orders.</p>
+            <button class="btn btn-outline-dark" onclick="showFullPageView('orders')">View Orders</button>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="card p-3 h-100">
+            <h5>User Details</h5>
+            <p>See your personal information.</p>
+            <button class="btn btn-outline-dark" onclick="showUserDetails()">View Details</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Luxury View -->
+  <div id="luxury-view" class="full-page-view">
+    <div class="full-page-header d-flex justify-content-between align-items-center">
+      <h4 class="mb-0">LUXURY COLLECTION</h4>
+      <button class="close-full-view" onclick="hideFullPageView('luxury')">&times;</button>
+    </div>
+    <div class="luxury-intro">
+      <div class="container text-center position-relative">
+        <h1 class="luxury-title animate__animated animate__fadeInDown">LUXURY REDEFINED</h1>
+        <p class="luxury-subtitle animate__animated animate__fadeIn animate__delay-1s">Exclusive designs crafted with premium materials for the discerning individual</p>
+        <div class="luxury-divider animate__animated animate__fadeIn animate__delay-2s"></div>
+      </div>
+    </div>
+    
+    <div class="container py-5">
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="luxury-feature animate__animated animate__fadeInUp">
+            <div class="luxury-icon">
+              <i class="bi bi-gem"></i>
+            </div>
+            <h4>Premium Materials</h4>
+            <p>Only the finest fabrics and materials are used in our luxury collection, ensuring unparalleled quality and comfort.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="luxury-feature animate__animated animate__fadeInUp animate__delay-1s">
+            <div class="luxury-icon">
+              <i class="bi bi-stars"></i>
+            </div>
+            <h4>Exclusive Designs</h4>
+            <p>Each piece is designed to be unique, with limited edition runs that ensure exclusivity for our customers.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="luxury-feature animate__animated animate__fadeInUp animate__delay-2s">
+            <div class="luxury-icon">
+              <i class="bi bi-hand-thumbs-up"></i>
+            </div>
+            <h4>Exceptional Craftsmanship</h4>
+            <p>Meticulous attention to detail and hand-finished elements showcase the artisanal quality of every garment.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="container py-4">
+      <h3 class="section-title text-center mb-5">Luxury Collection</h3>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card product-card">
+            <button class="wishlist-btn" onclick="toggleWishlistItem('Premium Leather Jacket', 4999)">
+              <i class="bi bi-heart"></i>
+            </button>
+            <img src="https://imgmedia.lbb.in/media/2023/07/64b8d8e65758625afe7bf6cb_1689835750343.jpg" class="card-img-top product-img" class="card-img-top product-img" alt="Premium Leather Jacket">
+            <div class="card-body">
+              <h5 class="product-title">Premium Leather Jacket</h5>
+              <p class="product-price">₹4,999</p>
+              <button class="btn btn-sm btn-outline-primary w-100" onclick="addToCart('Premium Leather Jacket', 4999)">
+                <i class="bi bi-cart-plus me-1"></i>Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card product-card">
+            <button class="wishlist-btn" onclick="toggleWishlistItem('Designer Silk Saree', 3999)">
+              <i class="bi bi-heart"></i>
+            </button>
+            <img src="https://i.pinimg.com/originals/97/ba/25/97ba2543fc1169cf3360de69d5ca8a44.jpg" class="card-img-top product-img" alt="Designer Silk Saree">
+            <div class="card-body">
+              <h5 class="product-title">Designer Silk Saree</h5>
+              <p class="product-price">₹3,999</p>
+              <button class="btn btn-sm btn-outline-primary w-100" onclick="addToCart('Designer Silk Saree', 3999)">
+                <i class="bi bi-cart-plus me-1"></i>Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card product-card">
+            <button class="wishlist-btn" onclick="toggleWishlistItem('Limited Edition Watch', 8999)">
+              <i class="bi bi-heart"></i>
+            </button>
+            <img src="https://i5.walmartimages.com/asr/b51bac15-1273-441a-b5f6-ceb78c71f6b7_1.ae08e2fe33f26f7fc57b8015aacda912.jpeg" class="card-img-top product-img" alt="Limited Edition Watch">
+            <div class="card-body">
+              <h5 class="product-title">Limited Edition Watch</h5>
+              <p class="product-price">₹8,999</p>
+              <button class="btn btn-sm btn-outline-primary w-100" onclick="addToCart('Limited Edition Watch', 8999)">
+                <i class="bi bi-cart-plus me-1"></i>Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Payment Section -->
+  <div id="payment-view" class="full-page-view">
+    <div class="full-page-header d-flex justify-content-between align-items-center">
+      <h4 class="mb-0">Payment & Shipping</h4>
+      <button class="close-full-view" onclick="hideFullPageView('payment')">&times;</button>
+    </div>
+    <div class="container py-4">
+      <div class="row g-3 mb-4">
+        <div class="col-md-6">
+          <input type="text" class="form-control" id="coupon-code" placeholder="Enter Coupon Code">
+        </div>
+        <div class="col-md-6">
+          <select class="form-select" id="payment-method-select" required>
+            <option value="">Select Payment Method</option>
+            <option value="COD">Cash on Delivery</option>
+            <option value="UPI">UPI</option>
+            <option value="Card">Credit/Debit Card</option>
+          </select>
+        </div>
+      </div>
+
+      <form id="order-form" class="row g-3">
+        <div class="col-md-6"><input type="text" class="form-control" id="customer-name" placeholder="Full Name" required></div>
+        <div class="col-md-6"><input type="tel" class="form-control" id="customer-phone" placeholder="Phone Number" required></div>
+        <div class="col-md-12"><textarea class="form-control" id="customer-address" placeholder="Full Address" rows="3" required></textarea></div>
+        <div class="col-md-6"><input type="text" class="form-control" id="customer-city" placeholder="City" required></div>
+        <div class="col-md-6"><input type="text" class="form-control" id="customer-pin" placeholder="PIN Code" required></div>
+        <div class="col-12 text-center">
+          <button type="submit" class="btn btn-success mt-3">Place Order</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Search Modal -->
+  <div class="modal fade" id="searchModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Search Products</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" id="search-modal-input" placeholder="Search products...">
+            <button class="btn btn-primary" type="button" id="search-modal-button">
+              <i class="bi bi-search"></i>
+            </button>
+          </div>
+          <div class="search-results-panel" id="search-modal-results" style="max-height: 400px; overflow-y: auto;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+ <!-- Collection Modals -->
+  <div class="modal fade collection-modal" id="menModal" tabindex="-1">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Men's Collection</h5>
+          <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row g-4">
+            <div class="col-md-4">
+              <div class="card product-card">
+                <button class="wishlist-btn" onclick="toggleWishlistItem('Urban Fit Jacket', 1999)">
+                  <i class="bi bi-heart"></i>
+                </button>
+                <img src="https://assets.myntassets.com/h_200,w_200,c_fill,g_auto/h_1440,q_100,w_1080/v1/assets/images/21076750/2022/12/5/f881788f-d41f-4d94-b084-130595bad5e11670236941966Jackets1.jpg" class="card-img-top product-img" alt="Urban Fit Jacket">
+                <div class="card-body">
+                  <h5 class="product-title">Urban Fit Jacket</h5>
+                  <p class="product-price">₹1,999</p>
+                  <button class="btn btn-sm btn-outline-primary w-100" onclick="addToCart('Urban Fit Jacket', 1999)">
+                    <i class="bi bi-cart-plus me-1"></i>Add to Cart
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card product-card">
+                <button class="wishlist-btn" onclick="toggleWishlistItem('Formal White Shirt', 1099)">
+                  <i class="bi bi-heart"></i>
+                </button>
+                <img src="https://i.pinimg.com/originals/5c/04/80/5c0480defa0905206f86945e285370ea.jpg" class="card-img-top product-img" alt="Formal White Shirt">
+                <div class="card-body">
+                  <h5 class="product-title">Formal White Shirt</h5>
+                  <p class="product-price">₹1,099</p>
+                  <button class="btn btn-sm btn-outline-primary w-100" onclick="addToCart('Formal White Shirt', 1099)">
+                    <i class="bi bi-cart-plus me-1"></i>Add to Cart
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card product-card">
+                <button class="wishlist-btn" onclick="toggleWishlistItem('Chino Pants', 799)">
+                  <i class="bi bi-heart"></i>
+                </button>
+                <img src="https://assets.myntassets.com/h_200,w_200,c_fill,g_auto/h_1440,q_100,w_1080/v1/assets/images/9089109/2022/3/15/b9215f01-ee5d-4ec6-8d8b-4e7beeef662c1647326511199-HERENOW-Men-Black-Slim-Fit-Solid-Mid-Rise-Chinos-27916473265-1.jpg" alt="Chino Pants">
+                <div class="card-body">
+                  <h5 class="product-title">Chino Pants</h5>
+                  <p class="product-price">₹799</p>
+                  <button class="btn btn-sm btn-outline-primary w-100" onclick="addToCart('Chino Pants', 799)">
+                    <i class="bi bi-cart-plus me-1"></i>Add to Cart
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Similar modals for women, genz, kids, luxury -->
+  <!-- Women Modal -->
+  <div class="modal fade collection-modal" id="womenModal" tabindex="-1">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Women's Collection</h5>
+          <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row g-4">
+            <div class="col-md-4">
+              <div class="card product-card">
+                <button class="wishlist-btn" onclick="toggleWishlistItem('Printed Kurti', 899)">
+                  <i class="bi bi-heart"></i>
+                </button>
+                <img src="https://assets.myntassets.com/h_200,w_200,c_fill,g_auto/h_1440,q_100,w_1080/v1/assets/images/2472859/2018/4/7/11523089731402-Anouk-Women-Black--Mustard-Printed-Straight-Kurta-6901523089731263-1.jpg" alt="Printed Kurti">
+                <div class="card-body">
+                  <h5 class="product-title">Printed Kurti</h5>
+                  <p class="product-price">₹899</p>
+                  <button class="btn btn-sm btn-outline-primary w-100" onclick="addToCart('Printed Kurti', 899)">
+                    <i class="bi bi-cart-plus me-1"></i>Add to Cart
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card product-card">
+                <button class="wishlist-btn" onclick="toggleWishlistItem('Floral Top', 599)">
+                  <i class="bi bi-heart"></i>
+                </button>
+                <img src="https://assets.myntassets.com/h_200,w_200,c_fill,g_auto/h_1440,q_100,w_1080/v1/assets/images/11193658/2020/9/10/7079e797-8b15-4c61-9de3-8eada9f4dc651599728610939-Chemistry-Women-Tops-9551599728609155-1.jpg" alt="Floral Top">
+                <div class="card-body">
+                  <h5 class="product-title">Floral Top</h5>
+                  <p class="product-price">₹599</p>
+                  <button class="btn btn-sm btn-outline-primary w-100" onclick="addToCart('Floral Top', 599)">
+                    <i class="bi bi-cart-plus me-1"></i>Add to Cart
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card product-card">
+                <button class="wishlist-btn" onclick="toggleWishlistItem('Co-ord Set', 1599)">
+                  <i class="bi bi-heart"></i>
+                </button>
+                <img src="https://www.ahalyaa.com/cdn/shop/products/AHTUPZ-COMBO-613-ICH_1_f6117cc6-002b-4ca1-a881-c5a52fab12b2_1080x.jpg?v=1680613801" class="card-img-top product-img" alt="Co-ord Set">
+                <div class="card-body">
+                  <h5 class="product-title">Co-ord Set</h5>
+                  <p class="product-price">₹1,599</p>
+                  <button class="btn btn-sm btn-outline-primary w-100" onclick="addToCart('Co-ord Set', 1599)">
+                    <i class="bi bi-cart-plus me-1"></i>Add to Cart
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GenZ Modal -->
+  <div class="modal fade collection-modal" id="genzModal" tabindex="-1">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">GenZ Collection</h5>
+          <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row g-4">
+            <div class="col-md-4">
+              <div class="card product-card">
+                <button class="wishlist-btn" onclick="toggleWishlistItem('Funky Hoodie', 1299)">
+                  <i class="bi bi-heart"></i>
+                </button>
+                <img src="https://m.media-amazon.com/images/I/71b9UhVQvvL._AC_UY1100_.jpg" alt="Funky Hoodie">
+                <div class="card-body">
+                  <h5 class="product-title">Funky Hoodie</h5>
+                  <p class="product-price">₹1,299</p>
+                  <button class="btn btn-sm btn-outline-primary w-100" onclick="addToCart('Funky Hoodie', 1299)">
+                    <i class="bi bi-cart-plus me-1"></i>Add to Cart
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card product-card">
+                <button class="wishlist-btn" onclick="toggleWishlistItem('Oversized Tee', 899)">
+                  <i class="bi bi-heart"></i>
+                </button>
+                <img src="https://assets.myntassets.com/h_200,w_200,c_fill,g_auto/h_1440,q_100,w_1080/v1/assets/images/2025/MARCH/5/ar3sM3ft_a88419eb527c41389edfa5cd12264e49.jpg" class="card-img-top product-img" alt="Oversized Tee">
+                <div class="card-body">
+                  <h5 class="product-title">Oversized Tee</h5>
+                  <p class="product-price">₹899</p>
+                  <button class="btn btn-sm btn-outline-primary w-100" onclick="addToCart('Oversized Tee', 899)">
+                    <i class="bi bi-cart-plus me-1"></i>Add to Cart
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card product-card">
+                <button class="wishlist-btn" onclick="toggleWishlistItem('Color Splash Co-ord', 1699)">
+                  <i class="bi bi-heart"></i>
+                </button>
+                <img src="https://cdn.shopify.com/s/files/1/0420/7073/7058/products/Matteus20695_400x.jpg?v=1661855647" alt="Color Splash Co-ord">
+                <div class="card-body">
+                  <h5 class="product-title">Color Splash Co-ord</h5>
+                  <p class="product-price">₹1,699</p>
+                  <button class="btn btn-sm btn-outline-primary w-100" onclick="addToCart('Color Splash Co-ord', 1699)">
+                    <i class="bi bi-cart-plus me-1"></i>Add to Cart
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Kids Modal -->
+  <div class="modal fade collection-modal" id="kidsModal" tabindex="-1">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Kids Collection</h5>
+          <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row g-4">
+            <div class="col-md-4">
+              <div class="card product-card">
+                <button class="wishlist-btn" onclick="toggleWishlistItem('Cute Cartoon Tee', 599)">
+                  <i class="bi bi-heart"></i>
+                </button>
+                <img src="http://c.shld.net/rpx/i/s/i/spin/-122/prod_1600013312??hei=64&wid=64&qlt=50" alt="Cute Cartoon Tee">
+                <div class="card-body">
+                  <h5 class="product-title">Cute Cartoon Tee</h5>
+                  <p class="product-price">₹599</p>
+                  <button class="btn btn-sm btn-outline-primary w-100" onclick="addToCart('Cute Cartoon Tee', 599)">
+                    <i class="bi bi-cart-plus me-1"></i>Add to Cart
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card product-card">
+                <button class="wishlist-btn" onclick="toggleWishlistItem('Mini Shorts', 499)">
+                  <i class="bi bi-heart"></i>
+                </button>
+                <img src="https://www.jiomart.com/images/product/500x630/rvjgq8zb9n/hellcat-boys-multicolor5-cotton-blend-typographic-pack-of-3-shorts-product-images-rvjgq8zb9n-0-202402280652.jpg" alt="Mini Shorts">
+                <div class="card-body">
+                  <h5 class="product-title">Mini Shorts</h5>
+                  <p class="product-price">₹499</p>
+                  <button class="btn btn-sm btn-outline-primary w-100" onclick="addToCart('Mini Shorts', 499)">
+                    <i class="bi bi-cart-plus me-1"></i>Add to Cart
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card product-card">
+                <button class="wishlist-btn" onclick="toggleWishlistItem('Rainbow Dress', 899)">
+                  <i class="bi bi-heart"></i>
+                </button>
+                <img src="https://i.etsystatic.com/6708489/r/il/2bc802/1722574931/il_fullxfull.1722574931_tc1z.jpg" alt="Rainbow Dress">
+                <div class="card-body">
+                  <h5 class="product-title">Rainbow Dress</h5>
+                  <p class="product-price">₹899</p>
+                  <button class="btn btn-sm btn-outline-primary w-100" onclick="addToCart('Rainbow Dress', 899)">
+                    <i class="bi bi-cart-plus me-1"></i>Add to Cart
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Luxury Modal -->
+  <div class="modal fade collection-modal" id="luxuryModal" tabindex="-1">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Luxury Collection</h5>
+          <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row g-4">
+            <div class="col-md-4">
+              <div class="card product-card">
+                <button class="wishlist-btn" onclick="toggleWishlistItem('Premium Leather Jacket', 4999)">
+                  <i class="bi bi-heart"></i>
+                </button>
+                <img src="https://imgmedia.lbb.in/media/2023/07/64b8d8e65758625afe7bf6cb_1689835750343.jpg" class="card-img-top product-img" alt="Premium Leather Jacket">
+                <div class="card-body">
+                  <h5 class="product-title">Premium Leather Jacket</h5>
+                  <p class="product-price">₹4,999</p>
+                  <button class="btn btn-sm btn-outline-primary w-100" onclick="addToCart('Premium Leather Jacket', 4999)">
+                    <i class="bi bi-cart-plus me-1"></i>Add to Cart
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card product-card">
+                <button class="wishlist-btn" onclick="toggleWishlistItem('Designer Silk Saree', 3999)">
+                  <i class="bi bi-heart"></i>
+                </button>
+                <img src="https://i.pinimg.com/originals/97/ba/25/97ba2543fc1169cf3360de69d5ca8a44.jpg"  alt="Designer Silk Saree">
+                <div class="card-body">
+                  <h5 class="product-title">Designer Silk Saree</h5>
+                  <p class="product-price">₹3,999</p>
+                  <button class="btn btn-sm btn-outline-primary w-100" onclick="addToCart('Designer Silk Saree', 3999)">
+                    <i class="bi bi-cart-plus me-1"></i>Add to Cart
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card product-card">
+                <button class="wishlist-btn" onclick="toggleWishlistItem('Limited Edition Watch', 6999)">
+                  <i class="bi bi-heart"></i>
+                </button>
+                <img src="https://i5.walmartimages.com/asr/b51bac15-1273-441a-b5f6-ceb78c71f6b7_1.ae08e2fe33f26f7fc57b8015aacda912.jpeg" class="card-img-top product-img" alt="Limited Edition Watch">
+                <div class="card-body">
+                  <h5 class="product-title">Limited Edition Watch</h5>
+                  <p class="product-price">₹8,999</p>
+                  <button class="btn btn-sm btn-outline-primary w-100" onclick="addToCart('Limited Edition Watch', 8999)">
+                    <i class="bi bi-cart-plus me-1"></i>Add to Cart
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Home Section -->
+  <section id="home" class="py-5">
+    <!-- Hero Section -->
+    <div class="hero-section">
+      <div class="container hero-content text-dark">
+        <h2 class="gradient-text">Elevate Your Everyday Style</h2>
+        <p class="lead">Timeless fashion for everyone. Discover elegance and individuality in every piece.</p>
+        <a href="#" class="btn btn-primary btn-lg mt-3" onclick="showCollectionModal('genz')">Shop Now</a>
+      </div>
+    </div>
+
+    <!-- Hero Carousel -->
+    <div class="container hero-carousel">
+      <div id="mainCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="0" class="active"></button>
+          <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="1"></button>
+          <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="2"></button>
+        </div>
+        <div class="carousel-inner rounded-3">
+          <div class="carousel-item active">
+            <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="d-block w-100" alt="Fashion Sale">
+            <div class="carousel-caption">
+              <h5>Summer Collection 2025</h5>
+              <p>Discover our latest summer trends with up to 50% off</p>
+              <a href="#" class="btn btn-primary" onclick="showCollectionModal('women')">Shop Now</a>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="https://images.unsplash.com/photo-1543076447-215ad9ba6923?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="d-block w-100" alt="Men's Fashion">
+            <div class="carousel-caption">
+              <h5>Men's Essentials</h5>
+              <p>Premium quality clothing for the modern man</p>
+              <a href="#" class="btn btn-primary" onclick="showCollectionModal('men')">Explore</a>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="d-block w-100" alt="Luxury Collection">
+            <div class="carousel-caption">
+              <h5>Luxury Redefined</h5>
+              <p>Exclusive designs crafted with premium materials</p>
+              <a href="#" class="btn btn-outline-light" onclick="showCollectionModal('luxury')">View Collection</a>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#mainCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#mainCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Sale Banner -->
+    <div class="container mt-5">
+      <div class="sale-banner bg-primary text-white p-3 rounded text-center">
+        <h4 class="mb-0">🔥 FLASH SALE: 50% OFF ON ALL GENZ COLLECTION 🔥</h4>
+        <p class="mb-0 mt-2">Limited time offer | Use code: LUNVIOR50</p>
+      </div>
+    </div>
+
+    <!-- Slider Section -->
+    <section class="slider-section py-5">
+      <div class="container">
+        <h3 class="section-title text-center gradient-text mb-5">Trending Now</h3>
+        <div class="owl-carousel owl-theme">
+          <div class="slider-item">
+            <img src="https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Trending 1">
+            <h5>Summer Collection</h5>
+            <button class="btn btn-sm btn-outline-primary" onclick="showCollectionModal('women')">Shop Now</button>
+          </div>
+          <div class="slider-item">
+            <img src="https://i.pinimg.com/originals/4d/7f/08/4d7f08b54e04286c7f5e006e7f5a0d45.jpg" alt="Trending 2">
+            <h5>Men's Essentials</h5>
+            <button class="btn btn-sm btn-outline-primary" onclick="showCollectionModal('men')">Shop Now</button>
+          </div>
+          <div class="slider-item">
+            <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Trending 3">
+            <h5>GenZ Favorites</h5>
+            <button class="btn btn-sm btn-outline-primary" onclick="showCollectionModal('genz')">Shop Now</button>
+          </div>
+          <div class="slider-item">
+            <img src="http://dress-trends.com/wp-content/uploads/2016/11/%D0%9Aids-fashion-trends-and-tendencies-2017-kids-clothes-kids-wear-4.jpg" alt="Trending 4">
+            <h5>Kids Collection</h5>
+            <button class="btn btn-sm btn-outline-primary" onclick="showCollectionModal('kids')">Shop Now</button>
+          </div>
+          <div class="slider-item">
+            <img src="https://images.unsplash.com/photo-1551232864-3f0890e580d9?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Trending 5">
+            <h5>Luxury Picks</h5>
+            <button class="btn btn-sm btn-outline-primary" onclick="showCollectionModal('luxury')">Shop Now</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Best Sellers -->
+    <section class="container my-5">
+      <h3 class="section-title gradient-text">🔥 Best Sellers</h3>
+      <div class="row g-4">
+        <div class="col-6 col-md-3">
+          <div class="card product-card">
+            <button class="wishlist-btn" onclick="toggleWishlistItem('Oversized Tee', 799)">
+              <i class="bi bi-heart"></i>
+            </button>
+            <img src="https://assets.myntassets.com/h_200,w_200,c_fill,g_auto/h_1440,q_100,w_1080/v1/assets/images/2025/APRIL/11/J8sIk2Gz_f88bffe1203248499b23f39a8077d6b6.jpg" alt="Oversized Tee">
+            <div class="card-body">
+              <h5 class="product-title">Oversized Tee</h5>
+              <p class="product-price">₹799</p>
+              <button class="btn btn-sm btn-outline-primary w-100" onclick="addToCart('Oversized Tee', 799)">
+                <i class="bi bi-cart-plus me-1"></i>Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="card product-card">
+            <button class="wishlist-btn" onclick="toggleWishlistItem('Graphic Hoodie', 1199)">
+              <i class="bi bi-heart"></i>
+            </button>
+            <img src="https://i.pinimg.com/736x/be/86/1c/be861c3aa871d7f7db3b77eebccffa20.jpg" alt="Graphic Hoodie">
+            <div class="card-body">
+              <h5 class="product-title">Graphic Hoodie</h5>
+              <p class="product-price">₹1199</p>
+              <button class="btn btn-sm btn-outline-primary w-100" onclick="addToCart('Graphic Hoodie', 1199)">
+                <i class="bi bi-cart-plus me-1"></i>Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="card product-card">
+            <button class="wishlist-btn" onclick="toggleWishlistItem('Kids Cotton Set', 599)">
+              <i class="bi bi-heart"></i>
+            </button>
+            <img src="https://www.jiomart.com/images/product/500x630/rvyiggdaw6/hellcat-trendy-printed-cotton-blend-tshirt-hoodie-jogger-trackpants-clothing-set-for-boys-product-images-rvyiggdaw6-0-202311041117.jpg" alt="Kids Cotton Set">
+            <div class="card-body">
+              <h5 class="product-title">Kids' Cotton Set</h5>
+              <p class="product-price">₹599</p>
+              <button class="btn btn-sm btn-outline-primary w-100" onclick="addToCart('Kids Cotton Set', 599)">
+                <i class="bi bi-cart-plus me-1"></i>Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="card product-card">
+            <button class="wishlist-btn" onclick="toggleWishlistItem('GenZ Cargo Pants', 999)">
+              <i class="bi bi-heart"></i>
+            </button>
+            <img src="https://freshstreetwear.com/cdn/shop/files/11_b8b20472-5e85-4d78-855a-69c72eb5698a.jpg?v=1691790345" alt="GenZ Cargo Pants">
+            <div class="card-body">
+              <h5 class="product-title">GenZ Cargo Pants</h5>
+              <p class="product-price">₹999</p>
+              <button class="btn btn-sm btn-outline-primary w-100" onclick="addToCart('GenZ Cargo Pants', 999)">
+                <i class="bi bi-cart-plus me-1"></i>Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="py-5 bg-light">
+    <div class="container">
+      <h2 class="section-title text-center gradient-text">Why Choose LUNVIOR?</h2>
+      <div class="row g-4">
+        <div class="col-md-3">
+          <div class="service-card h-100">
+            <div class="service-icon">
+              <i class="bi bi-truck"></i>
+            </div>
+            <h5>Free Shipping</h5>
+            <p>On all orders over ₹999</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="service-card h-100">
+            <div class="service-icon">
+              <i class="bi bi-arrow-left-right"></i>
+            </div>
+            <h5>Easy Returns</h5>
+            <p>30-day return policy</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="service-card h-100">
+            <div class="service-icon">
+              <i class="bi bi-shield-check"></i>
+            </div>
+            <h5>Secure Payment</h5>
+            <p>100% secure checkout</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="service-card h-100">
+            <div class="service-icon">
+              <i class="bi bi-headset"></i>
+            </div>
+            <h5>24/7 Support</h5>
+            <p>Dedicated support</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section id="testimonials" class="py-5">
+    <div class="container">
+      <h2 class="section-title text-center gradient-text">What Our Customers Say</h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="testimonial-card p-4 h-100">
+            <div class="d-flex align-items-center mb-3">
+              <img src="https://randomuser.me/api/portraits/women/32.jpg" class="testimonial-img me-3">
+              <div>
+                <h5 class="mb-0">Priya Sharma</h5>
+                <div class="text-warning">
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                </div>
+              </div>
+            </div>
+            <p>"The quality of LUNVIOR's clothes is amazing! I love their GenZ collection - so trendy and comfortable."</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="testimonial-card p-4 h-100">
+            <div class="d-flex align-items-center mb-3">
+              <img src="https://randomuser.me/api/portraits/men/45.jpg" class="testimonial-img me-3">
+              <div>
+                <h5 class="mb-0">Rahul Patel</h5>
+                <div class="text-warning">
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-half"></i>
+                </div>
+              </div>
+            </div>
+            <p>"Great customer service and fast delivery. The formal shirts fit perfectly and look very premium."</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="testimonial-card p-4 h-100">
+            <div class="d-flex align-items-center mb-3">
+              <img src="https://randomuser.me/api/portraits/women/68.jpg" class="testimonial-img me-3">
+              <div>
+                <h5 class="mb-0">Neha Gupta</h5>
+                <div class="text-warning">
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                </div>
+              </div>
+            </div>
+            <p>"My kids love their new outfits! The fabric is soft and the designs are so cute. Will definitely shop again."</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section id="newsletter" class="newsletter-section my-5">
+    <div class="container py-5">
+      <div class="row justify-content-center">
+        <div class="col-md-8 text-center">
+          <h2 class="mb-3">Stay Updated</h2>
+          <p class="mb-4">Subscribe to our newsletter for exclusive offers and style tips</p>
+          <div class="input-group mb-3 mx-auto" style="max-width: 500px;">
+            <input type="email" class="form-control" placeholder="Your email address">
+            <button class="btn btn-light" type="button">Subscribe</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="py-5 bg-light">
+    <div class="container">
+      <h2 class="section-title gradient-text mb-4">About LUNVIOR</h2>
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <p class="lead">LUNVIOR is redefining fast fashion for the modern Indian youth and children. Built on bold style, ethical sourcing and affordable price points, LUNVIOR represents luxury that's inclusive, expressive, and rooted in GenZ energy.</p>
+          <p>Founded in 2023, we've quickly become a favorite among fashion-forward individuals who value both style and substance. Our collections are designed to empower self-expression while maintaining the highest standards of quality.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-5">
+    <div class="container">
+      <h2 class="section-title gradient-text mb-5">Contact Us</h2>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card p-4 h-100">
+            <h4><i class="bi bi-geo-alt-fill me-2"></i> Our Location</h4>
+            <p class="mb-4">123 Fashion Street, Mumbai, Maharashtra 400001</p>
+            
+            <h4><i class="bi bi-envelope-fill me-2"></i> Email Us</h4>
+            <p class="mb-4">
+              <a href="mailto:lunvior25@gmail.com" class="text-decoration-none">lunvior25@gmail.com</a>
+            </p>
+            
+            <h4><i class="bi bi-telephone-fill me-2"></i> Call Us</h4>
+            <p>
+              <a href="tel:+919078949387" class="text-decoration-none">+91 90789 49387</a>
+            </p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card p-4 h-100">
+            <h4 class="mb-4">Send Us a Message</h4>
+            <form>
+              <div class="mb-3">
+                <input type="text" class="form-control" placeholder="Your Name">
+              </div>
+              <div class="mb-3">
+                <input type="email" class="form-control" placeholder="Your Email">
+              </div>
+              <div class="mb-3">
+                <input type="text" class="form-control" placeholder="Subject">
+              </div>
+              <div class="mb-3">
+                <textarea class="form-control" rows="4" placeholder="Your Message"></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary">Send Message</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Thank You Modal -->
+  <div class="modal fade" id="thankYouModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content text-center">
+        <div class="modal-header">
+          <h5 class="modal-title text-success">🎉 Thank You for Your Order!</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div id="order-summary"></div>
+          <a href="#" class="btn btn-primary mt-3" data-bs-dismiss="modal" onclick="showFullPageView('orders')">View My Orders</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Login Modal -->
+  <div class="modal fade" id="loginModal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content p-4">
+        <h5>Login to LUNVIOR</h5>
+        <form id="login-form">
+          <input type="text" class="form-control mb-2" id="login-username" 
+                 placeholder="Email or Mobile Number" required>
+          <input type="password" class="form-control mb-2" id="login-pass" 
+                 placeholder="Password" required>
+          <button type="submit" class="btn btn-dark w-100">Login</button>
+          <div id="login-status" class="text-center mt-2"></div>
+        </form>
+        <hr>
+        <p class="text-center">New to LUNVIOR? <a href="#" class="text-primary" onclick="openSignupModal()">Create an account</a></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Signup Modal -->
+  <div class="modal fade" id="signupModal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content p-4">
+        <h5>Create Account</h5>
+        <form id="signup-form">
+          <input type="text" class="form-control mb-2" id="signup-name" placeholder="Your Name" required>
+          <input type="text" class="form-control mb-2" id="signup-username" 
+                 placeholder="Email or Mobile Number" required>
+          <input type="password" class="form-control mb-2" id="signup-pass" 
+                 placeholder="Password" required>
+          <button type="submit" class="btn btn-success w-100">Sign Up</button>
+          <div id="signup-status" class="text-center mt-2"></div>
+        </form>
+        <hr>
+        <p class="text-center">Already have an account? <a href="#" class="text-primary" onclick="openLoginModal()">Login here</a></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- User Details Modal -->
+  <div class="modal fade" id="userDetailsModal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content p-4">
+        <h5>User Details</h5>
+        <div class="mb-3">
+          <label class="form-label">Name</label>
+          <p id="user-detail-name" class="form-control-plaintext"></p>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Email/Mobile</label>
+          <p id="user-detail-email" class="form-control-plaintext"></p>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Member Since</label>
+          <p id="user-detail-joined" class="form-control-plaintext"></p>
+        </div>
+        <button class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer bg-dark text-white py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 mb-4 mb-md-0">
+          <h5 class="mb-3">LUNVIOR</h5>
+          <p>Timeless fashion for everyone. Discover elegance and individuality in every piece.</p>
+          <div class="d-flex gap-3">
+            <a href="#" class="text-white"><i class="bi bi-facebook fs-5"></i></a>
+            <a href="#" class="text-white"><i class="bi bi-instagram fs-5"></i></a>
+            <a href="#" class="text-white"><i class="bi bi-twitter fs-5"></i></a>
+            <a href="#" class="text-white"><i class="bi bi-pinterest fs-5"></i></a>
+          </div>
+        </div>
+        
+        <div class="col-md-2 mb-4 mb-md-0">
+          <h5 class="mb-3">Shop</h5>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="#" class="text-white text-decoration-none" onclick="showCollectionModal('men')">Men</a></li>
+            <li class="mb-2"><a href="#" class="text-white text-decoration-none" onclick="showCollectionModal('women')">Women</a></li>
+            <li class="mb-2"><a href="#" class="text-white text-decoration-none" onclick="showCollectionModal('genz')">GenZ</a></li>
+            <li class="mb-2"><a href="#" class="text-white text-decoration-none" onclick="showCollectionModal('kids')">Kids</a></li>
+            <li><a href="#" class="text-white text-decoration-none" onclick="showCollectionModal('luxury')">Luxury</a></li>
+          </ul>
+        </div>
+        
+        <div class="col-md-2 mb-4 mb-md-0">
+          <h5 class="mb-3">Help</h5>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="#" class="text-white text-decoration-none">FAQs</a></li>
+            <li class="mb-2"><a href="#" class="text-white text-decoration-none">Shipping</a></li>
+            <li class="mb-2"><a href="#" class="text-white text-decoration-none">Returns</a></li>
+            <li><a href="#" class="text-white text-decoration-none">Size Guide</a></li>
+          </ul>
+        </div>
+        
+        <div class="col-md-4">
+          <h5 class="mb-3">Contact</h5>
+          <ul class="list-unstyled">
+            <li class="mb-2"><i class="bi bi-envelope me-2"></i> lunvior25@gmail.com</li>
+            <li class="mb-2"><i class="bi bi-telephone me-2"></i> +91 90789 49387</li>
+            <li><i class="bi bi-geo-alt me-2"></i> 123 Fashion Street, Mumbai</li>
+          </ul>
+        </div>
+      </div>
+      <hr class="my-4">
+      <div class="text-center">
+        <p class="mb-0">&copy; 2025 LUNVIOR. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+  <script>
+    // ------------------- INITIALIZATION -------------------
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    let orders = JSON.parse(localStorage.getItem("orders")) || [];
+    let users = JSON.parse(localStorage.getItem("users")) || [
+      { name: "Demo User", username: "demo@example.com", password: "demo123", joined: new Date().toISOString() }
+    ];
+    let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+    let usedCoupons = JSON.parse(localStorage.getItem("usedCoupons")) || [];
+
+   const products = [
+  { 
+    name: "Oversized Tee", 
+    price: 799, 
+    category: "genz", 
+    image: "https://assets.myntassets.com/h_200,w_200,c_fill,g_auto/h_1440,q_100,w_1080/v1/assets/images/2025/APRIL/11/J8sIk2Gz_f88bffe1203248499b23f39a8077d6b6.jpg" 
+  },
+  { 
+    name: "Graphic Hoodie", 
+    price: 1199, 
+    category: "genz", 
+    image: "https://i.pinimg.com/736x/be/86/1c/be861c3aa871d7f7db3b77eebccffa20.jpg" 
+  },
+  { 
+    name: "Kids' Cotton Set", 
+    price: 599, 
+    category: "kids", 
+    image: "http://dress-trends.com/wp-content/uploads/2016/11/%D0%9Aids-fashion-trends-and-tendencies-2017-kids-clothes-kids-wear-4.jpg" 
+  },
+  { 
+    name: "GenZ Cargo Pants", 
+    price: 999, 
+    category: "genz", 
+    image: "https://freshstreetwear.com/cdn/shop/files/11_b8b20472-5e85-4d78-855a-69c72eb5698a.jpg?v=1691790345" 
+  },
+  { 
+    name: "Urban Fit Jacket", 
+    price: 1999, 
+    category: "men", 
+    image: "https://assets.myntassets.com/h_200,w_200,c_fill,g_auto/h_1440,q_100,w_1080/v1/assets/images/21076750/2022/12/5/f881788f-d41f-4d94-b084-130595bad5e11670236941966Jackets1.jpg" 
+  },
+  { 
+    name: "Formal White Shirt", 
+    price: 1099, 
+    category: "men", 
+    image: "https://i.pinimg.com/originals/5c/04/80/5c0480defa0905206f86945e285370ea.jpg" 
+  },
+  { 
+    name: "Printed Kurti", 
+    price: 899, 
+    category: "women", 
+    image: "https://assets.myntassets.com/h_200,w_200,c_fill,g_auto/h_1440,q_100,w_1080/v1/assets/images/2472859/2018/4/7/11523089731402-Anouk-Women-Black--Mustard-Printed-Straight-Kurta-6901523089731263-1.jpg" 
+  },
+  { 
+    name: "Floral Top", 
+    price: 599, 
+    category: "women", 
+    image: "https://assets.myntassets.com/h_200,w_200,c_fill,g_auto/h_1440,q_100,w_1080/v1/assets/images/11193658/2020/9/10/7079e797-8b15-4c61-9de3-8eada9f4dc651599728610939-Chemistry-Women-Tops-9551599728609155-1.jpg" 
+  },
+  { 
+    name: "Funky Hoodie", 
+    price: 1299, 
+    category: "genz", 
+    image: "https://m.media-amazon.com/images/I/71b9UhVQvvL._AC_UY1100_.jpg" 
+  },
+  { 
+    name: "Color Splash Co-ord", 
+    price: 1699, 
+    category: "genz", 
+    image: "https://cdn.shopify.com/s/files/1/0420/7073/7058/products/Matteus20695_400x.jpg?v=1661855647" 
+  },
+  { 
+    name: "Cute Cartoon Tee", 
+    price: 599, 
+    category: "kids", 
+    image: "http://c.shld.net/rpx/i/s/i/spin/-122/prod_1600013312??hei=64&wid=64&qlt=50" 
+  },
+  { 
+    name: "Mini Shorts", 
+    price: 499, 
+    category: "kids", 
+    image: "https://www.jiomart.com/images/product/500x630/rvjgq8zb9n/hellcat-boys-multicolor5-cotton-blend-typographic-pack-of-3-shorts-product-images-rvjgq8zb9n-0-202402280652.jpg" 
+  },
+  { 
+    name: "Rainbow Dress", 
+    price: 899, 
+    category: "kids", 
+    image: "https://i.etsystatic.com/6708489/r/il/2bc802/1722574931/il_fullxfull.1722574931_tc1z.jpg" 
+  },
+  { 
+    name: "Co-ord Set", 
+    price: 1599, 
+    category: "women", 
+    image: "https://www.ahalyaa.com/cdn/shop/products/AHTUPZ-COMBO-613-ICH_1_f6117cc6-002b-4ca1-a881-c5a52fab12b2_1080x.jpg?v=1680613801" 
+  },
+  { 
+    name: "Chino Pants", 
+    price: 799, 
+    category: "men", 
+    image: "https://assets.myntassets.com/h_200,w_200,c_fill,g_auto/h_1440,q_100,w_1080/v1/assets/images/9089109/2022/3/15/b9215f01-ee5d-4ec6-8d8b-4e7beeef662c1647326511199-HERENOW-Men-Black-Slim-Fit-Solid-Mid-Rise-Chinos-27916473265-1.jpg" 
+  },
+  { 
+    name: "Premium Leather Jacket", 
+    price: 4999, 
+    category: "luxury", 
+    image: "https://imgmedia.lbb.in/media/2023/07/64b8d8e65758625afe7bf6cb_1689835750343.jpg" 
+  },
+  { 
+    name: "Designer Silk Saree", 
+    price: 3999, 
+    category: "luxury", 
+    image: "https://i.pinimg.com/originals/97/ba/25/97ba2543fc1169cf3360de69d5ca8a44.jpg" 
+  },
+  { 
+    name: "Limited Edition Watch", 
+    price: 8999, 
+    category: "luxury", 
+    image: "https://i5.walmartimages.com/asr/b51bac15-1273-441a-b5f6-ceb78c71f6b7_1.ae08e2fe33f26f7fc57b8015aacda912.jpeg" 
+  }
+];
+
+    const coupons = {
+      "SAVE100": { discount: 100, expiry: "2025-12-31" },
+      "LUNVIOR50": { discount: 50, expiry: "2025-12-31" }
+    };
+
+    // ------------------- UTILITY FUNCTIONS -------------------
+    function save(key, value) {
+      localStorage.setItem(key, JSON.stringify(value));
+    }
+
+    function isLoggedIn() {
+      return localStorage.getItem("loggedIn") === "true";
+    }
+
+    // ------------------- SEARCH FUNCTIONALITY -------------------
+    function setupSearch() {
+      // Search icon click event
+      document.getElementById("search-icon-btn").addEventListener("click", function() {
+        const searchModal = new bootstrap.Modal(document.getElementById('searchModal'));
+        searchModal.show();
+        
+        // Focus on input when modal opens
+        setTimeout(() => {
+          document.getElementById("search-modal-input").focus();
+        }, 500);
+      });
+    
+      // Search button in modal
+      document.getElementById("search-modal-button").addEventListener("click", function() {
+        const query = document.getElementById("search-modal-input").value;
+        performSearch(query, document.getElementById("search-modal-results"));
+      });
+    
+      // Also search on Enter key
+      document.getElementById("search-modal-input").addEventListener("keyup", function(e) {
+        if (e.key === "Enter") {
+          const query = this.value;
+          performSearch(query, document.getElementById("search-modal-results"));
+        }
+      });
+    
+      // Perform the search
+      function performSearch(query, resultsContainer) {
+        if (!query.trim()) {
+          resultsContainer.innerHTML = `<div class="p-3 text-center text-muted">Start typing to search products</div>`;
+          return;
+        }
+        
+        const results = products.filter(product => 
+          product.name.toLowerCase().includes(query.toLowerCase())
+        );
+        
+        resultsContainer.innerHTML = "";
+        
+        if (results.length === 0) {
+          resultsContainer.innerHTML = `<div class="p-3 text-center">No results found for "${query}"</div>`;
+        } else {
+          results.forEach(product => {
+            const item = document.createElement("div");
+            item.className = "search-result-item d-flex align-items-center p-3";
+            item.innerHTML = `
+              <img src="${product.image}" alt="${product.name}" width="60" height="60" style="object-fit: cover; border-radius: 5px;">
+              <div class="ms-3">
+                <h6 class="mb-0">${product.name}</h6>
+                <small class="text-muted">₹${product.price}</small>
+                <button class="btn btn-sm btn-outline-primary mt-1" onclick="addToCart('${product.name}', ${product.price})">
+                  <i class="bi bi-cart-plus"></i> Add to Cart
+                </button>
+              </div>
+            `;
+            item.addEventListener("click", (e) => {
+              // Only close if clicking on the item itself, not buttons inside
+              if (e.target === item) {
+                addToCart(product.name, product.price);
+                bootstrap.Modal.getInstance(document.getElementById('searchModal')).hide();
+              }
+            });
+            resultsContainer.appendChild(item);
+          });
+        }
+      }
+    }
+
+    // ------------------- VIEW MANAGEMENT -------------------
+    function showCollectionModal(collection) {
+      if (!isLoggedIn()) {
+        openLoginModal();
+        return;
+      }
+      
+      // Special handling for luxury collection
+      if (collection === 'luxury') {
+        showFullPageView('luxury');
+        return;
+      }
+      
+      const modal = new bootstrap.Modal(document.getElementById(`${collection}Modal`));
+      modal.show();
+    }
+
+    function showFullPageView(view) {
+      if (!isLoggedIn() && view !== 'new-arrivals' && view !== 'luxury') {
+        openLoginModal();
+        return;
+      }
+      
+      document.getElementById(`${view}-view`).style.display = 'block';
+      document.body.style.overflow = 'hidden';
+      
+      // Load content if needed
+      if (view === 'wishlist') renderWishlist();
+      if (view === 'cart') renderCart();
+      if (view === 'orders') renderOrders();
+      if (view === 'user-dashboard') {
+        document.getElementById("dashboard-username").textContent = localStorage.getItem("userName");
+      }
+    }
+
+    function hideFullPageView(view) {
+      document.getElementById(`${view}-view`).style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+
+    function toggleUserControlPanel() {
+      const panel = document.getElementById('userControlPanel');
+      panel.classList.toggle('collapsed');
+    }
+
+    function confirmLogout() {
+      document.getElementById('logout-overlay').style.display = 'block';
+      document.getElementById('logout-confirm').style.display = 'block';
+    }
+
+    function hideLogoutConfirm() {
+      document.getElementById('logout-overlay').style.display = 'none';
+      document.getElementById('logout-confirm').style.display = 'none';
+    }
+
+    // ------------------- WISHLIST FUNCTIONS -------------------
+    function toggleWishlistItem(name, price) {
+      if (!isLoggedIn()) {
+        alert("Please login to add items to wishlist.");
+        openLoginModal();
+        return;
+      }
+      
+      const index = wishlist.findIndex(item => item.name === name);
+      if (index === -1) {
+        wishlist.push({ name, price });
+      } else {
+        wishlist.splice(index, 1);
+      }
+      
+      save("wishlist", wishlist);
+      updateWishlistCount();
+      renderWishlist();
+      
+      // Update heart icon state
+      const buttons = document.querySelectorAll(`.wishlist-btn[onclick*="${name}"]`);
+      buttons.forEach(btn => {
+        btn.classList.toggle('active', index === -1);
+      });
+    }
+
+    function renderWishlist() {
+      const wishlistItems = document.getElementById("wishlist-items");
+      const emptyWishlist = document.getElementById("empty-wishlist");
+      
+      wishlistItems.innerHTML = "";
+      
+      if (wishlist.length === 0) {
+        emptyWishlist.style.display = "block";
+        return;
+      }
+      
+      emptyWishlist.style.display = "none";
+      
+      wishlist.forEach((item, i) => {
+        const product = products.find(p => p.name === item.name) || item;
+        wishlistItems.innerHTML += `
+          <div class="col-md-4">
+            <div class="card product-card">
+              <button class="wishlist-btn active" onclick="toggleWishlistItem('${product.name}', ${product.price})">
+                <i class="bi bi-heart"></i>
+              </button>
+              <img src="${product.image}" class="card-img-top product-img" alt="${product.name}">
+              <div class="card-body">
+                <h5 class="product-title">${product.name}</h5>
+                <p class="product-price">₹${product.price}</p>
+                <button class="btn btn-sm btn-outline-primary w-100" onclick="addToCart('${product.name}', ${product.price})">
+                  <i class="bi bi-cart-plus me-1"></i>Add to Cart
+                </button>
+              </div>
+            </div>
+          </div>`;
+      });
+    }
+
+    function updateWishlistCount() {
+      const counts = document.querySelectorAll("#wishlist-count, #mobile-wishlist-count");
+      counts.forEach(count => {
+        count.textContent = wishlist.length;
+      });
+    }
+
+    // ------------------- CART FUNCTIONS -------------------
+    function renderCart() {
+      const cartItems = document.getElementById("cart-items");
+      const total = document.getElementById("cart-total");
+      cartItems.innerHTML = "";
+      let sum = 0;
+
+      if (cart.length === 0) {
+        cartItems.innerHTML = `<div class="col-12 text-center"><p>Your cart is empty.</p></div>`;
+        total.textContent = "0";
+        return;
+      }
+
+      cart.forEach((item, i) => {
+        sum += item.price;
+        cartItems.innerHTML += `
+          <div class="col-md-6">
+            <div class="card p-3 d-flex flex-row justify-content-between align-items-center">
+              <div>
+                <h6>${item.name}</h6>
+                <p class="mb-0">₹${item.price}</p>
+              </div>
+              <button class="btn btn-sm btn-danger" onclick="removeFromCart(${i})">Remove</button>
+            </div>
+          </div>`;
+      });
+
+      total.textContent = sum;
+    }
+
+    function removeFromCart(index) {
+      cart.splice(index, 1);
+      save("cart", cart);
+      renderCart();
+      updateCartCount();
+    }
+
+    function addToCart(name, price) {
+      if (!isLoggedIn()) {
+        alert("Please login to add items to cart.");
+        openLoginModal();
+        return;
+      }
+      
+      cart.push({ name, price });
+      save("cart", cart);
+      updateCartCount();
+      
+      // Show a quick confirmation
+      const toast = document.createElement('div');
+      toast.className = 'position-fixed bottom-0 end-0 p-3';
+      toast.style.zIndex = '11';
+      toast.innerHTML = `
+        <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
+          <div class="toast-header bg-success text-white">
+            <strong class="me-auto">Added to Cart</strong>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast" aria-label="Close"></button>
+          </div>
+          <div class="toast-body">
+            ${name} has been added to your cart.
+          </div>
+        </div>
+      `;
+      document.body.appendChild(toast);
+      
+      // Auto remove the toast after 3 seconds
+      setTimeout(() => {
+        toast.remove();
+      }, 3000);
+    }
+
+    function updateCartCount() {
+      const counts = document.querySelectorAll("#cart-count, #mobile-cart-count");
+      counts.forEach(count => {
+        count.textContent = cart.length;
+      });
+    }
+
+    // ------------------- ORDER FUNCTIONS -------------------
+    function renderOrders() {
+      const ordersList = document.getElementById("orders-list");
+      ordersList.innerHTML = "";
+      
+      if (orders.length === 0) {
+        ordersList.innerHTML = `
+          <li class="list-group-item text-center">
+            <i class="bi bi-bag text-muted" style="font-size: 2rem;"></i>
+            <h5 class="mt-3">No orders yet</h5>
+            <p>Your orders will appear here</p>
+            <a href="#" class="btn btn-primary mt-2" onclick="showCollectionModal('genz')">Start Shopping</a>
+          </li>
+        `;
+        return;
+      }
+      
+      orders.forEach((order, i) => {
+        let itemsHtml = "";
+        order.items.forEach(item => {
+          itemsHtml += `<li>${item.name} - ₹${item.price}</li>`;
+        });
+        
+        ordersList.innerHTML += `
+          <li class="list-group-item">
+            <div class="d-flex justify-content-between">
+              <h5>Order #${order.id}</h5>
+              <span class="badge bg-primary">${order.status}</span>
+            </div>
+            <p class="mb-1">Date: ${new Date(order.date).toLocaleDateString()}</p>
+            <p class="mb-1">Total: ₹${order.total}</p>
+            <div class="mt-2">
+              <h6>Items:</h6>
+              <ul class="mb-2">${itemsHtml}</ul>
+            </div>
+          </li>
+        `;
+      });
+    }
+
+    function showPayment() {
+      hideFullPageView('cart');
+      showFullPageView('payment');
+      
+      // Calculate total
+      let total = 0;
+      cart.forEach(item => {
+        total += item.price;
+      });
+      
+      document.getElementById("cart-total").textContent = total;
+    }
+
+    function placeOrder() {
+      const paymentMethod = document.getElementById("payment-method-select").value;
+      const name = document.getElementById("customer-name").value;
+      const phone = document.getElementById("customer-phone").value;
+      const address = document.getElementById("customer-address").value;
+      const city = document.getElementById("customer-city").value;
+      const pin = document.getElementById("customer-pin").value;
+      
+      if (!paymentMethod || !name || !phone || !address || !city || !pin) {
+        alert("Please fill all the details");
+        return;
+      }
+      
+      // Create order
+      const order = {
+        id: Date.now(),
+        date: new Date().toISOString(),
+        items: [...cart],
+        total: document.getElementById("cart-total").textContent,
+        status: "Processing",
+        paymentMethod,
+        shippingAddress: { name, phone, address, city, pin }
+      };
+      
+      orders.push(order);
+      save("orders", orders);
+      
+      // Clear cart
+      cart = [];
+      save("cart", cart);
+      updateCartCount();
+      
+      // Show thank you modal
+      const orderSummary = document.getElementById("order-summary");
+      orderSummary.innerHTML = `
+        <p>Your order #${order.id} has been placed successfully!</p>
+        <p>Total: ₹${order.total}</p>
+        <p>Payment Method: ${order.paymentMethod}</p>
+      `;
+      
+      hideFullPageView('payment');
+      const thankYouModal = new bootstrap.Modal(document.getElementById('thankYouModal'));
+      thankYouModal.show();
+    }
+
+    // ------------------- USER AUTH FUNCTIONS -------------------
+    function openLoginModal() {
+      const loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
+      loginModal.show();
+    }
+
+    function openSignupModal() {
+      const signupModal = new bootstrap.Modal(document.getElementById('signupModal'));
+      signupModal.show();
+      const loginModal = bootstrap.Modal.getInstance(document.getElementById('loginModal'));
+      if (loginModal) loginModal.hide();
+    }
+
+    function loginUser(e) {
+      e.preventDefault();
+      const username = document.getElementById("login-username").value;
+      const password = document.getElementById("login-pass").value;
+      const status = document.getElementById("login-status");
+      
+      // Simple validation
+      const user = users.find(u => (u.username === username || u.email === username) && u.password === password);
+      if (user) {
+        localStorage.setItem("loggedIn", "true");
+        localStorage.setItem("userName", user.name);
+        localStorage.setItem("userEmail", user.username.includes('@') ? user.username : user.email);
+        
+        // Update UI
+        document.getElementById("user-avatar").style.display = "flex";
+        document.getElementById("login-btn").classList.add("d-none");
+        document.getElementById("control-panel-username").textContent = user.name;
+        document.getElementById("control-panel-email").textContent = user.username.includes('@') ? user.username : user.email;
+        
+        // Close modal
+        const modal = bootstrap.Modal.getInstance(document.getElementById('loginModal'));
+        modal.hide();
+        
+        // Show welcome message
+        status.innerHTML = '<div class="alert alert-success">Login successful!</div>';
+        setTimeout(() => {
+          status.innerHTML = '';
+        }, 2000);
+      } else {
+        status.innerHTML = '<div class="alert alert-danger">Invalid username or password</div>';
+      }
+    }
+
+    function signupUser(e) {
+      e.preventDefault();
+      const name = document.getElementById("signup-name").value;
+      const username = document.getElementById("signup-username").value;
+      const password = document.getElementById("signup-pass").value;
+      const status = document.getElementById("signup-status");
+      
+      // Simple validation
+      if (users.some(u => u.username === username)) {
+        status.innerHTML = '<div class="alert alert-danger">Username/Email already exists</div>';
+        return;
+      }
+      
+      const newUser = {
+        name,
+        username,
+        password,
+        joined: new Date().toISOString()
+      };
+      
+      users.push(newUser);
+      save("users", users);
+      
+      status.innerHTML = '<div class="alert alert-success">Account created successfully!</div>';
+      
+      // Auto login
+      setTimeout(() => {
+        localStorage.setItem("loggedIn", "true");
+        localStorage.setItem("userName", name);
+        localStorage.setItem("userEmail", username.includes('@') ? username : '');
+        
+        document.getElementById("user-avatar").style.display = "flex";
+        document.getElementById("login-btn").classList.add("d-none");
+        document.getElementById("control-panel-username").textContent = name;
+        document.getElementById("control-panel-email").textContent = username.includes('@') ? username : '';
+        
+        const modal = bootstrap.Modal.getInstance(document.getElementById('signupModal'));
+        modal.hide();
+      }, 1500);
+    }
+
+    function logout() {
+      localStorage.removeItem("loggedIn");
+      localStorage.removeItem("userName");
+      localStorage.removeItem("userEmail");
+      
+      document.getElementById("user-avatar").style.display = "none";
+      document.getElementById("login-btn").classList.remove("d-none");
+      document.getElementById("userControlPanel").classList.add("collapsed");
+      hideLogoutConfirm();
+      
+      // Show login modal
+      openLoginModal();
+    }
+
+    function showUserDetails() {
+      document.getElementById("user-detail-name").textContent = localStorage.getItem("userName");
+      document.getElementById("user-detail-email").textContent = localStorage.getItem("userEmail");
+      document.getElementById("user-detail-joined").textContent = new Date().toLocaleDateString();
+      
+      const modal = new bootstrap.Modal(document.getElementById('userDetailsModal'));
+      modal.show();
+    }
+
+    // ------------------- INITIAL SETUP -------------------
+    document.addEventListener('DOMContentLoaded', function() {
+      // Event listeners
+      document.getElementById("login-form").addEventListener("submit", loginUser);
+      document.getElementById("signup-form").addEventListener("submit", signupUser);
+      document.getElementById("order-form").addEventListener("submit", function(e) {
+        e.preventDefault();
+        placeOrder();
+      });
+      
+      // Setup search functionality
+      setupSearch();
+      
+      // User avatar click event
+      document.getElementById("user-avatar").addEventListener("click", function() {
+        if (isLoggedIn()) {
+          toggleUserControlPanel();
+        } else {
+          openLoginModal();
+        }
+      });
+      
+      // Check if user is logged in
+      if (isLoggedIn()) {
+        document.getElementById("user-avatar").style.display = "flex";
+        document.getElementById("login-btn").classList.add("d-none");
+        document.getElementById("control-panel-username").textContent = localStorage.getItem("userName");
+        document.getElementById("control-panel-email").textContent = localStorage.getItem("userEmail");
+      } else {
+        document.getElementById("user-avatar").style.display = "none";
+        document.getElementById("login-btn").classList.remove("d-none");
+      }
+      
+      // Update counts
+      updateCartCount();
+      updateWishlistCount();
+      
+      // Navbar scroll effect
+      window.addEventListener('scroll', function() {
+        const navbar = document.querySelector('.navbar');
+        if (window.scrollY > 50) {
+          navbar.classList.add('scrolled');
+        } else {
+          navbar.classList.remove('scrolled');
+        }
+      });
+      
+      // Initialize Owl Carousel
+      $('.owl-carousel').owlCarousel({
+        loop: true,
+        margin: 20,
+        nav: true,
+        responsive: {
+          0: {
+            items: 1
+          },
+          600: {
+            items: 2
+          },
+          1000: {
+            items: 3
+          }
+        }
+      });
+    });
+  </script>
+</body>
+</html>
